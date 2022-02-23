@@ -10,16 +10,11 @@ sharedMappings.register(
 
 module.exports = {
   output: {
-    uniqueName: "microfrontendProduct",
+    uniqueName: "product",
     publicPath: "auto"
   },
   optimization: {
     runtimeChunk: false
-  },
-  resolve: {
-    alias: {
-      ...sharedMappings.getAliases(),
-    }
   },
   experiments: {
     outputModule: true
@@ -30,20 +25,10 @@ module.exports = {
         name: "product",
 			  filename: "remoteEntry.js",
 			  exposes: {
-				  './Module': './src/app/product/product.module.ts',
+				  './web-components': './src/bootstrap.ts',
 			  },
 
-        shared: share({
-          "@angular/core": { singleton: true, strictVersion: true, requiredVersion: 'auto' },
-          "@angular/common": { singleton: true, strictVersion: true, requiredVersion: 'auto' },
-          "@angular/common/http": { singleton: true, strictVersion: true, requiredVersion: 'auto' },
-          "@angular/router": { singleton: true, strictVersion: true, requiredVersion: 'auto' },
-          "@angular/cdk":{ singleton: true, strictVersion: false, requiredVersion: 'auto' },
-          "@angular/material":{ singleton: true, strictVersion: false, requiredVersion: 'auto' },
-
-          ...sharedMappings.getDescriptors()
-        })
-
+        shared: ["@angular/core", "@angular/common", "@angular/router", "@angular/cdk", "@angular/material"]
     }),
     sharedMappings.getPlugin()
   ],
