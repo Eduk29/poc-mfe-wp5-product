@@ -30,7 +30,7 @@ module.exports = {
         name: "product",
 			  filename: "remoteEntry.js",
 			  exposes: {
-				  './Module': './src/app/product/product.module.ts',
+				  "./web-components": "./src/bootstrap.ts",
 			  },
 
         shared: share({
