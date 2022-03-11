@@ -7,9 +7,15 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ProductComponent implements OnInit {
 
+  title = "App Product";
+
   constructor() { }
 
   ngOnInit(): void {
+  }
+
+  displayClass(): boolean {
+    return location.port === '3002';
   }
 
 }

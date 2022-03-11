@@ -17,4 +17,10 @@ export class AppComponent implements OnInit {
       this.router.navigateByUrl(location.pathname.substr(1));
     });
   }
+
+  get displayNavbar(): boolean {
+    console.log(location.port === '3002');
+
+    return location.port === '3002';
+  }
 }
